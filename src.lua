@@ -137,8 +137,10 @@ end)
 
 game:GetService("RunService").Stepped:Connect(function()
     if getgenv().AutoFarm then
-        local useTool = game.Players.LocalPlayer.Backpack[getgenv().CurrentWeapon]
-        plr.Character.Humanoid:EquipTool(useTool)
+        pcall(function()
+            local useTool = game.Players.LocalPlayer.Backpack[getgenv().CurrentWeapon]
+            plr.Character.Humanoid:EquipTool(useTool)
+        end)
     end
     if getgenv().AutoFarm or getgenv().Noclip then
         pcall(function()
