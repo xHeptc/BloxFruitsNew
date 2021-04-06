@@ -136,15 +136,16 @@ skillsSection:NewToggle("Auto Skill: F", "Uses Skill F", function(state)
 end)
 
 game:GetService("RunService").Stepped:Connect(function()
-    if getgenv().AutoFarm then
+    if getgenv().getgenv().Noclip then
         pcall(function()
-            local useTool = game.Players.LocalPlayer.Backpack[getgenv().CurrentWeapon]
-            plr.Character.Humanoid:EquipTool(useTool)
+            plr.Character.Humanoid:ChangeState(11)
         end)
     end
     if getgenv().AutoFarm or getgenv().Noclip then
         pcall(function()
             plr.Character.Humanoid:ChangeState(11)
+	    local useTool = game.Players.LocalPlayer.Backpack[getgenv().CurrentWeapon]
+            plr.Character.Humanoid:EquipTool(useTool)
         end)
     end
     if getgenv().SkillX then
